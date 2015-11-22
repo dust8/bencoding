@@ -25,12 +25,12 @@ def bencode(x):
     b'd4:spaml1:a1:bee'
     '''
     if isinstance(x, str):
-        data = x.encode()
-        return str(len(data)).encode()+b':'+data
+        data = x.encode('latin1')
+        return str(len(data)).encode('latin1')+b':'+data
     elif isinstance(x, bytes):
-        return str(len(x)).encode()+b':'+x
+        return str(len(x)).encode('latin1')+b':'+x
     elif isinstance(x, (int, float)):
-        return b'i'+str(x).encode()+b'e'
+        return b'i'+str(x).encode('latin1')+b'e'
     elif isinstance(x, list):
         data = b''.join([bencode(i) for i in x])
         return b'l'+data+b'e'
