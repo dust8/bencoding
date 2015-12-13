@@ -11,21 +11,24 @@ def bencode(x):
     '''
     >>> bencode('spam')
     b'4:spam'
-    
+
     >>> bencode(3)
     b'i3e'
-    
+
     >>> bencode(['spam', 'eggs'])
     b'l4:spam4:eggse'
-    
+
     >>> bencode({'cow': 'moo', 'spam': 'eggs'})
     b'd3:cow3:moo4:spam4:eggse'
-    
+
     >>> bencode({'spam': ['a', 'b']})
     b'd4:spaml1:a1:bee'
     '''
     if isinstance(x, str):
-        data = x.encode('latin1')
+        try:
+            data = x.encode('latin1')
+        except:
+            data = x.encode()
         return str(len(data)).encode('latin1')+b':'+data
     elif isinstance(x, bytes):
         return str(len(x)).encode('latin1')+b':'+x
@@ -36,7 +39,7 @@ def bencode(x):
         return b'l'+data+b'e'
     elif isinstance(x, dict):
         items = sorted(list(x.items()))
-        data = b''.join([bencode(k) + bencode(v) for k,v in items])
+        data = b''.join([bencode(k) + bencode(v) for k, v in items])
         return b'd'+data+b'e'
     else:
         raise BencodingError('bencode error')
@@ -46,13 +49,13 @@ def bdecode(x):
     '''
     >>> bdecode(b'4:spam')
     'spam'
-    
+
     >>> bdecode(b'i3e')
     3
-    
+
     >>> bdecode(b'l4:spam4:eggse')
     ['spam', 'eggs']
-    
+
     >>> d = {'cow': 'moo', 'spam': 'eggs'}
     >>> d == bdecode(b'd3:cow3:moo4:spam4:eggse')
     True
@@ -93,8 +96,8 @@ def _bdecode(x, f=0):
             k, f = _bdecode(x, f)
             r[k], f = _bdecode(x, f)
         return r, f+1
-    
-    
+
+
 if __name__ == '__main__':
     import doctest
     doctest.testmod()
