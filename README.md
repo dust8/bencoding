@@ -1,16 +1,16 @@
-# Introducing bencoding
+# Introducing
 
 bencoding is implemented over python3.
 
 ## Installation
 
-```
+```python
 pip install bencoding
 ```
 
 ## Usage
 
-```
+```python
 >>> from bencoding import bencode, bdecode
 >>> ping = {"t":"aa", "y":"q", "q":"ping", "a":{"id":"abcdefghij0123456789"}}
 >>> bencoded = bencode(ping)   
