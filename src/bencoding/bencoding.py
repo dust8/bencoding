@@ -45,15 +45,15 @@ def bencode(x):
 def bdecode(x):
     '''
     >>> bdecode(b'4:spam')
-    'spam'
+    b'spam'
 
     >>> bdecode(b'i3e')
     3
 
     >>> bdecode(b'l4:spam4:eggse')
-    ['spam', 'eggs']
+    [b'spam', b'eggs']
 
-    >>> d = {'cow': 'moo', 'spam': 'eggs'}
+    >>> d = {b'cow': b'moo', b'spam': b'eggs'}
     >>> d == bdecode(b'd3:cow3:moo4:spam4:eggse')
     True
     '''
@@ -74,10 +74,7 @@ def _bdecode(x, f=0):
         colon = x.index(b':', f)
         n = int(x[f:colon])
         colon += 1
-        try:
-            return x[colon:colon + n].decode(), colon + n
-        except:
-            return x[colon:colon + n], colon + n
+        return x[colon:colon + n], colon + n
     elif r == ord(b'i'):
         f += 1
         newf = x.index(b'e', f)
@@ -99,4 +96,5 @@ def _bdecode(x, f=0):
 
 if __name__ == '__main__':
     import doctest
+
     doctest.testmod()
