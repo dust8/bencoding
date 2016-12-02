@@ -1,9 +1,7 @@
 Bencoding: BCODE for Python3
 ============================
 
-
 Bencoding is a Bcode library for Python3.
-
 
 .. code-block:: python
 
@@ -17,10 +15,8 @@ Bencoding is a Bcode library for Python3.
     >>> data[b'info'][b'piece length']
     524288
 
-
 Installation
 ------------
-
 
 To install Bencoding, simply:
 
@@ -28,9 +24,7 @@ To install Bencoding, simply:
 
     $ pip install bencoding
 
-
 Documentation
 -------------
-
 
 Documenttation is available at http://bencoding.readthedocs.io .
