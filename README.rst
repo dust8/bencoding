@@ -1,6 +1,7 @@
 Bencoding: BCODE for Python3
 ============================
 
+
 Bencoding is a Bcode library for Python3.
 
 
@@ -20,6 +21,7 @@ Bencoding is a Bcode library for Python3.
 Installation
 ------------
 
+
 To install Bencoding, simply:
 
 .. code-block:: bash
@@ -27,8 +29,8 @@ To install Bencoding, simply:
     $ pip install bencoding
 
 
-
-
 Documentation
 -------------
-Documenttation is available at `http://bencoding.readthedocs.io <http://bencoding.readthedocs.io>`_.
+
+
+Documenttation is available at http://bencoding.readthedocs.io .
