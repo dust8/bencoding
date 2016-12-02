@@ -1,4 +1,4 @@
-Bencoding: BCODE for Python3
+Bencoding : BCODE for Python3
 ============================
 
 Bencoding is a Bcode library for Python3.
